@@ -67,11 +67,30 @@ public class GUI extends JFrame {
             }
             
         });
+        
+        JMenu transformsMenu=new JMenu("Transformations");
+        
+        JMenuItem duplicate = new JMenuItem(new AbstractAction("Duplicate") {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                shapeCanvas.duplicateShapes();
+            }
+            
+        });
+
+        
+        transformsMenu.add(duplicate);
+        
+        
+        
+        
 
         result.add(shapeMenu);
         result.add(styleMenu);
         result.add(undoMenu);
         result.add(redoMenu);
+        result.add(transformsMenu);
         result.setLayout(new FlowLayout(FlowLayout.LEFT));       
         return result;
     }

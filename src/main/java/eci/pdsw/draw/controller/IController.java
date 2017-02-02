@@ -36,7 +36,7 @@ public interface IController extends Observable {
 
     void deleteShape(Integer index);
 
-    
+    public void duplicateShapes();
     
     Renderer getRenderer();
 

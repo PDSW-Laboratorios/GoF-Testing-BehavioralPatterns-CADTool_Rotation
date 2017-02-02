@@ -66,6 +66,13 @@ public class ShapeCanvas extends JPanel implements Observer {
         });
     }
 
+    
+    public void duplicateShapes(){
+        controller.duplicateShapes();
+        this.repaint();
+    }
+    
+    
     @Override
     public void paint(Graphics g) {
         super.paint(g);

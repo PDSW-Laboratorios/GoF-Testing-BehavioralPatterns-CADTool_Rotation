@@ -14,6 +14,7 @@ import eci.pdsw.draw.model.Shape;
 import eci.pdsw.pattern.observer.Observer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -47,7 +48,7 @@ public class Controller implements IController {
         addShape(mp1, mp2);                 
 
     }
-    
+
     
         /**
      * Duplica todas las figuras, y las ubica en una nueva posicion.
@@ -55,20 +56,23 @@ public class Controller implements IController {
      * @pos la coleccion 'shapes' contiene el doble de figuras
      * @pos la coleccion 'shapes' no tiene referencias duplicadas
      */
+    @Override
     public void duplicateShapes(){
         
-        List<Shape> newShapes=new LinkedList<>();
+        List<Point> newShapesFirstPoints=new LinkedList<>();
+        List<Point> newShapesSecondPoints=new LinkedList<>();
         
         int displacementDelta=10+new Random(System.currentTimeMillis()).nextInt(50);
         
         for (Shape s:shapes){
-            Shape ns=s.cloneShape();
-            ns.setPoint1(new Point(s.getPoint1().getX(),s.getPoint1().getY()+displacementDelta));
-            ns.setPoint2(new Point(s.getPoint2().getX(),s.getPoint2().getY()+displacementDelta));
-            newShapes.add(ns);
+            newShapesFirstPoints.add(new Point(s.getPoint1().getX(),s.getPoint1().getY()+displacementDelta));
+            newShapesSecondPoints.add(new Point(s.getPoint2().getX(),s.getPoint2().getY()+displacementDelta));
         }
-        for (Shape ns:newShapes){
-            shapes.add(ns);
+        Iterator<Point> it1=newShapesFirstPoints.iterator();
+        Iterator<Point> it2=newShapesSecondPoints.iterator();
+        
+        while (it1.hasNext() && it2.hasNext()){
+            addShape(it1.next(), it2.next());
         }
         
                     
