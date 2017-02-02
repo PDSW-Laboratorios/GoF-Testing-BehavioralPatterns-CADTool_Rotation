@@ -30,13 +30,13 @@ public class ShapeList extends JPanel implements Observer {
     private DefaultListModel<String> listModel;
     private JList<String> shapeList;
     private JButton deleteButton;
-    
+
     public ShapeList(IController control) {
         super(new BorderLayout());
         this.listModel = new DefaultListModel();
         this.shapeList = new JList(listModel);
         this.controller = control;
-        this.add(shapeList,BorderLayout.CENTER);
+        this.add(shapeList, BorderLayout.CENTER);
         shapeList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.deleteButton = new JButton("Delete Shape");
 
@@ -49,17 +49,22 @@ public class ShapeList extends JPanel implements Observer {
                 }
             }
         });
-        
-        this.add(deleteButton,BorderLayout.SOUTH);
+
+        this.add(deleteButton, BorderLayout.SOUTH);
         this.controller.addObserver(this);
     }
+
     
-	@Override
-	public void update() {
+    public int getSelectedShapeIndex(){
+        return shapeList.getSelectedIndex();
+    }
+    
+    @Override
+    public void update() {
         listModel.removeAllElements();
         List<Shape> shapes = controller.getShapes();
-        for(Shape elem : shapes) {
+        for (Shape elem : shapes) {
             listModel.addElement(elem.getElementType().name());
         }
-	}
+    }
 }

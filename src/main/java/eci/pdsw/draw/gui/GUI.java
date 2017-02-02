@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 
 /**
@@ -73,14 +74,32 @@ public class GUI extends JFrame {
         JMenuItem duplicate = new JMenuItem(new AbstractAction("Duplicate") {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                shapeCanvas.duplicateShapes();
+            public void actionPerformed(ActionEvent e) {                
+                shapeCanvas.duplicateShapes();                
             }
             
         });
 
+        JMenuItem rotate = new JMenuItem(new AbstractAction("Rotate selected shape clockwise") {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {                
+                
+                if (shapeList.getSelectedShapeIndex()==-1){
+                    JOptionPane.showMessageDialog(rootPane, "No shape selected.");
+                }
+                else{
+                    shapeCanvas.rotateSelectedShape(shapeList.getSelectedShapeIndex());                    
+                }
+                
+            }
+            
+        });
+
+
         
         transformsMenu.add(duplicate);
+        transformsMenu.add(rotate);
         
         
         

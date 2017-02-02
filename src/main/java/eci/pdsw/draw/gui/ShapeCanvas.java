@@ -72,6 +72,11 @@ public class ShapeCanvas extends JPanel implements Observer {
         this.repaint();
     }
     
+    public void rotateSelectedShape(Integer index){
+        controller.rotateSelectedShape(index);
+        this.repaint();
+    }
+    
     
     @Override
     public void paint(Graphics g) {

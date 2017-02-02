@@ -32,6 +32,9 @@ public interface IController extends Observable {
     @Override
     void deleteObserver(Observer o);
 
+    
+    void rotateSelectedShape(Integer index);
+    
     void deleteShape(Integer index);
 
     public void duplicateShapes();

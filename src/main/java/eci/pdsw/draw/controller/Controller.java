@@ -50,7 +50,7 @@ public class Controller implements IController {
     }
 
     
-        /**
+     /**
      * Duplica todas las figuras, y las ubica en una nueva posicion.
      * @pre la coleccion 'shapes' no tiene referencias duplicadas
      * @pos la coleccion 'shapes' contiene el doble de figuras
@@ -74,8 +74,7 @@ public class Controller implements IController {
         while (it1.hasNext() && it2.hasNext()){
             addShape(it1.next(), it2.next());
         }
-        
-                    
+                
         
     }
   
@@ -106,8 +105,26 @@ public class Controller implements IController {
     public void deleteShape(Integer index) {
         int idx = index;
         shapes.remove(idx);
+        
+        //notificar a la capa de presentación
         notifyObservers();
     }
+    
+    /**
+     * Rota la figura correspondiente a la posicion 'index' un angulo
+     * de 90 grados a la derecha, usando como eje de rotación la esquina
+     * inferior izquierda del rectángulo que contenga a la figura.
+     * @param index la posicion de la figura en el conjunto de figuras
+     * del controlador
+     */
+    @Override
+    public void rotateSelectedShape(Integer index) {
+        //NO IMPLEMENTADO
+        
+        //notificar a la capa de presentación
+        notifyObservers();        
+    }    
+    
     
     @Override
     public void setRenderer(Renderer renderer) {
@@ -119,6 +136,7 @@ public class Controller implements IController {
     public Renderer getRenderer() {
     	return this.renderer;
     }
+
     
     @Override
     public List<Shape> getShapes() {
@@ -151,4 +169,6 @@ public class Controller implements IController {
                     o.update();
             }
     }
+
+
 }
