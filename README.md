@@ -75,24 +75,26 @@ Quedando al final:
 
 Revise la especificación del método 'rotateSelectedShape' y a partir del mismo haga lo siguiente:
 	
-	* Defina las clases de equivalencia para las posibles entradas de este método. Ponga el detalle de estas clases, a manera de comentarios, en la clase de pruebas ControllerTest.
-	* Seleccione un caso por cada clase de equivalencia e implemente las respectivas pruebas en ControllerTest.
-	* Cuando haya hecho lo anterior, ejecute:
+* Defina las clases de equivalencia para las posibles entradas de este método. Ponga el detalle de estas clases, a manera de comentarios, en la clase de pruebas ControllerTest.
+* Seleccione un caso por cada clase de equivalencia e implemente las respectivas pruebas en ControllerTest.
+
+* Cuando haya hecho lo anterior, ejecute:
 	
-		```bash		
-			git add .			
-			git commit -m "primera versión de las pruebas"
+```bash		
+git add .			
+git commit -m "primera versión de las pruebas"
 			
-		```		
-	* Haga la implementación del método 'rotateSelectedShape', y apoyese en las pruebas (mvn test), para verificar la funcionalidad del mismo.
-	* Una vez tenga la funcionalidad deseada, realice las pruebas de cubrimiento para rectificar que las pruebas están contemplando todos los caminos/condiciones del método implementado.
-	* Una vez se tenga la funcionalidad implementada, haga un nuevo commit:
+```		
+		
+* Haga la implementación del método 'rotateSelectedShape', y apoyese en las pruebas (mvn test), para verificar la funcionalidad del mismo.
+* Una vez tenga la funcionalidad deseada, realice las pruebas de cubrimiento para rectificar que las pruebas están contemplando todos los caminos/condiciones del método implementado.
+* Una vez se tenga la funcionalidad implementada, haga un nuevo commit:
 	
-		```bash		
-			git add .			
-			git commit -m "funcionalidad mirror implementada"
+```bash		
+git add .			
+git commit -m "funcionalidad mirror implementada"
 			
-		```		
+```		
 
 
 ####Parte B.
@@ -112,11 +114,11 @@ Tenga en cuenta que para lograr esta funcionalidad se requiere:
 3. Mantener, con un esquema de pilas, tanto la secuencia de comandos ejecutada, como la secuencia de comandos 'deshecha', de manera que las operaciones de 'deshacer' y 'rehacer' se hagan en un orden lógico.
 
 
-Nota: Para comprimir el avance en un archivo .zip, use el comando (dentro del directorio que va a comprimir):
+Nota: Para comprimir el avance en un archivo .zip, use el comando (dentro del directorio que va a comprimir, sin olvidar el punto):
 
 
-```bash		
-	zip -r proyectxx.zip * .*
+```bash	
+	zip -r NOMBRE.PROYECTO.zip .	
 ```			
 (hay un espacio entre * y .*, esto es para incluír archivos ocultos).
 
