@@ -45,7 +45,7 @@ public class ShapeList extends JPanel implements Observer {
             public void actionPerformed(ActionEvent e) {
                 int index = shapeList.getSelectedIndex();
                 if (index >= 0) {
-                    controller.commandDeleteShape(index);
+                    controller.deleteShape(index);
                 }
             }
         });

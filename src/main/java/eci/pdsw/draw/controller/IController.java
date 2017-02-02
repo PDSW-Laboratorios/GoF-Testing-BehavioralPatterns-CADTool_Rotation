@@ -27,9 +27,7 @@ public interface IController extends Observable {
 
     void addShape(Integer index, Shape shape);
 
-    void commandAddShape(java.awt.Point p1, java.awt.Point p2);
-
-    void commandDeleteShape(int index);
+    void addShapeFromScreenPoints(java.awt.Point p1, java.awt.Point p2);
 
     @Override
     void deleteObserver(Observer o);

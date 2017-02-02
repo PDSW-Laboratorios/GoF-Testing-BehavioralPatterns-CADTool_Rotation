@@ -58,7 +58,7 @@ public class ShapeCanvas extends JPanel implements Observer {
             public void mouseReleased(MouseEvent e) {
                 endDrag = new Point(e.getX(), e.getY());
                 if (Math.abs(endDrag.x - startDrag.x) > 2 && Math.abs(endDrag.y - startDrag.y) > 2) {
-                    controller.commandAddShape(startDrag, endDrag);
+                    controller.addShapeFromScreenPoints(startDrag, endDrag);
                 }
                 startDrag = null;
                 endDrag = null;

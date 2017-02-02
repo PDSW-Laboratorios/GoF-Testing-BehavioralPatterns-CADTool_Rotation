@@ -39,7 +39,7 @@ public class Controller implements IController {
     }
     
     @Override
-    public void commandAddShape(java.awt.Point p1,java.awt.Point p2) {
+    public void addShapeFromScreenPoints(java.awt.Point p1,java.awt.Point p2) {
         Point mp1 = Point.newPoint(p1.x, p1.y);
         Point mp2 = Point.newPoint(p2.x, p2.y);
                 
@@ -78,16 +78,7 @@ public class Controller implements IController {
                     
         
     }
-    
-
-    
-    
-    @Override
-    public void commandDeleteShape(int index) {
-        deleteShape(index);
-       
-    }
-
+  
     
     @Override
     public void addShape(Point p1,Point p2) {
