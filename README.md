@@ -120,7 +120,7 @@ Nota: Para comprimir el avance en un archivo .zip, use el comando (dentro del di
 ```bash	
 	zip -r NOMBRE.PROYECTO.zip .	
 ```			
-(hay un espacio entre * y .*, esto es para incluír archivos ocultos).
+
 
 
 ###Criterios de evaluación
