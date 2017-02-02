@@ -10,32 +10,32 @@ package eci.pdsw.draw.model;
  * @author fchaves
  */
 public class Point {
-    private Integer x;
+    private Float x;
 
-    private Integer y;
+    private Float y;
     
-    public Point(Integer x,Integer y) {
+    public Point(Float x,Float y) {
         this.x = x;
         this.y = y;
     }
     
-    static public Point newPoint(Integer x,Integer y) {
+    static public Point newPoint(Float x,Float y) {
         return new Point(x,y);
     }
     
-    public Integer getX() {
+    public Float getX() {
         return x;
     }
     
-    public Integer getY() {
+    public Float getY() {
         return y;
     }
     
-    public void setX(Integer x) {
+    public void setX(Float x) {
         this.x = x;
     }
 
-    public void setY(Integer y) {
+    public void setY(Float y) {
         this.y = y;
     }
     

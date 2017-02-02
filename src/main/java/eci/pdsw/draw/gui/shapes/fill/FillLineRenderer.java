@@ -23,7 +23,7 @@ public class FillLineRenderer implements LineRenderer {
     public void draw(Graphics2D g2, Line line) {
         g2.setPaint(Color.black);
         g2.setStroke(new BasicStroke(FillRenderer.STROKE_WIDTH));
-        g2.drawLine(line.getPoint1().getX(), line.getPoint1().getY(), line.getPoint2().getX(), line.getPoint2().getY());
+        g2.drawLine(Math.round(line.getPoint1().getX()), Math.round(line.getPoint1().getY()), Math.round(line.getPoint2().getX()), Math.round(line.getPoint2().getY()));
     }
     
 }

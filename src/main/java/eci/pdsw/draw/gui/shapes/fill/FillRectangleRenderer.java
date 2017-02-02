@@ -21,14 +21,18 @@ public class FillRectangleRenderer implements RectangleRenderer {
     @Override
     public void draw(Graphics2D g2, Rectangle rectangle) {
 
-        Integer width = Math.abs(rectangle.getPoint2().getX() - rectangle.getPoint1().getX());
-        Integer height = Math.abs(rectangle.getPoint2().getY() - rectangle.getPoint1().getY());
+        Float width = Math.abs(rectangle.getPoint2().getX() - rectangle.getPoint1().getX());
+        Float height = Math.abs(rectangle.getPoint2().getY() - rectangle.getPoint1().getY());
         
         g2.setPaint(Color.blue);
         g2.setStroke(new BasicStroke(FillRenderer.STROKE_WIDTH));
-        g2.drawRect(rectangle.getPoint1().getX(),rectangle.getPoint1().getY(), width, height);
+        g2.drawRect(Math.round(rectangle.getPoint1().getX()),Math.round(rectangle.getPoint1().getY()), Math.round(width), Math.round(height));
         g2.setPaint(new Color(0f,0f,1f,.5f ));
-        g2.fillRect(rectangle.getPoint1().getX(),rectangle.getPoint1().getY(), width, height);
+        g2.fillRect(Math.round(rectangle.getPoint1().getX()),Math.round(rectangle.getPoint1().getY()), Math.round(width), Math.round(height));
+    
+    
     }
+    
+    
     
 }

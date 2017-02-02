@@ -40,8 +40,8 @@ public class Controller implements IController {
     
     @Override
     public void addShapeFromScreenPoints(java.awt.Point p1,java.awt.Point p2) {
-        Point mp1 = Point.newPoint(p1.x, p1.y);
-        Point mp2 = Point.newPoint(p2.x, p2.y);
+        Point mp1 = Point.newPoint(new Float(p1.x), new Float(p1.y));
+        Point mp2 = Point.newPoint(new Float(p2.x), new Float(p2.y));
                 
         ElementType actualElementType = getSelectedElementType();
     	setSelectedElementType(actualElementType);

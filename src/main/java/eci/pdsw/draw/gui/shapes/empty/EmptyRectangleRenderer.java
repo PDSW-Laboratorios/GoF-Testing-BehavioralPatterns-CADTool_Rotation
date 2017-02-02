@@ -20,9 +20,9 @@ public class EmptyRectangleRenderer implements RectangleRenderer {
     public void draw(Graphics2D g2, Rectangle rectangle) {
         g2.setPaint(Color.blue);
 
-        Integer width = Math.abs(rectangle.getPoint2().getX() - rectangle.getPoint1().getX());
-        Integer height = Math.abs(rectangle.getPoint2().getY() - rectangle.getPoint1().getY());
-        g2.drawRect(rectangle.getPoint1().getX(),rectangle.getPoint1().getY(), width, height);
+        Float width = Math.abs(rectangle.getPoint2().getX() - rectangle.getPoint1().getX());
+        Float height = Math.abs(rectangle.getPoint2().getY() - rectangle.getPoint1().getY());
+        g2.drawRect(Math.round(rectangle.getPoint1().getX()),Math.round(rectangle.getPoint1().getY()), Math.round(width), Math.round(height));
     }
     
 }
