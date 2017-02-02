@@ -6,13 +6,11 @@
 package eci.pdsw.draw.gui;
 
 import eci.pdsw.draw.controller.IController;
-import eci.pdsw.draw.gui.shapes.EllipseRenderer;
 import eci.pdsw.draw.gui.shapes.LineRenderer;
 import eci.pdsw.draw.gui.shapes.RectangleRenderer;
 import eci.pdsw.draw.gui.shapes.Renderer;
 import eci.pdsw.draw.model.Line;
 import eci.pdsw.draw.model.Rectangle;
-import eci.pdsw.draw.model.Ellipse;
 import eci.pdsw.draw.model.Shape;
 import eci.pdsw.pattern.observer.Observer;
 
@@ -88,7 +86,6 @@ public class ShapeCanvas extends JPanel implements Observer {
         
         LineRenderer lineRenderer = renderer.createLineRenderer();
         RectangleRenderer rectangleRenderer = renderer.createRectangleRenderer();
-        EllipseRenderer ellipseRenderer = renderer.createEllipseRenderer();
         
         
         for(Shape shape : list) {
@@ -98,9 +95,6 @@ public class ShapeCanvas extends JPanel implements Observer {
                     break;
                 case Rectangle:
                     rectangleRenderer.draw(g2, (Rectangle)shape);
-                    break;
-                case Ellipse:
-                    ellipseRenderer.draw(g2, (Ellipse)shape);                    
                     break;
             }
         }

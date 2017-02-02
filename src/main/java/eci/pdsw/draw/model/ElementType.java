@@ -11,6 +11,5 @@ package eci.pdsw.draw.model;
  */
 public enum ElementType {
     Line,
-    Rectangle,
-    Ellipse;
+    Rectangle;
 }

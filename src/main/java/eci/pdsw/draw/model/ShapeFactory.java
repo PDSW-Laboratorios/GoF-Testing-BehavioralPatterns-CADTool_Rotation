@@ -24,15 +24,7 @@ public class ShapeFactory {
                                          ,Math.max(p1.getY(), p2.getY()));
                 
                 result = Rectangle.newRectangle(ul, lr);
-            } break;
-            case Ellipse:{
-                Point ul = Point.newPoint(Math.min(p1.getX(), p2.getX())
-                                         ,Math.min(p1.getY(), p2.getY()));
-                Point lr = Point.newPoint(Math.max(p1.getX(), p2.getX())
-                                         ,Math.max(p1.getY(), p2.getY()));
-                
-                result = Ellipse.newEllipse(ul, lr);
-            }
+            } 
         }
         return result;
     }

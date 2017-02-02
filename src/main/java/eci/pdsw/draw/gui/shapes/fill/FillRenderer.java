@@ -8,7 +8,6 @@ package eci.pdsw.draw.gui.shapes.fill;
 import eci.pdsw.draw.gui.shapes.Renderer;
 import eci.pdsw.draw.gui.shapes.LineRenderer;
 import eci.pdsw.draw.gui.shapes.RectangleRenderer;
-import eci.pdsw.draw.gui.shapes.EllipseRenderer;
 
 /**
  *
@@ -29,9 +28,5 @@ public class FillRenderer implements Renderer {
         return new FillRectangleRenderer();
     }
 
-    @Override
-    public EllipseRenderer createEllipseRenderer() {
-        return new FillEllipseRenderer();
-    }
 
 }
