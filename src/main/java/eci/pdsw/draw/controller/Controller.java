@@ -116,10 +116,44 @@ public class Controller implements IController {
      * inferior izquierda del rectángulo que contenga a la figura.
      * @param index la posicion de la figura en el conjunto de figuras
      * del controlador
+     * @throws eci.pdsw.draw.controller.ControllerException
      */
     @Override
-    public void rotateSelectedShape(Integer index) {
-        //NO IMPLEMENTADO
+    public void rotateSelectedShape(Integer index) throws ControllerException {
+        if (index < 0 || index >= shapes.size()) {
+            throw new ControllerException("Indice invalido");
+        }
+        
+        Shape s = shapes.get(index);
+        
+        Point p1 = s.getPoint1();
+        Point p2 = s.getPoint2();
+        
+        double pivotx = Math.min(p1.getX(), p2.getX());
+        double pivoty = Math.min(p1.getY(), p2.getY());
+        
+        double dx = p1.getX() - pivotx;
+        double dy = p1.getY() - pivoty;
+        
+        double angle =  Math.atan2(dy, dx) - Math.PI/2.0;
+        double r = Math.sqrt(dx*dx + dy*dy);
+        
+        p1.setX(new Float(r * Math.cos(angle) + pivotx));
+        p1.setY(new Float(r * Math.sin(angle) + pivoty));
+        
+        /*  -------  */
+        
+        dx = p2.getX() - pivotx;
+        dy = p2.getY() - pivoty;
+        
+        angle =  Math.atan2(dy, dx) - Math.PI/2.0;
+        r = Math.sqrt(dx*dx + dy*dy);
+        
+        p2.setX(new Float(r * Math.cos(angle) + pivotx));
+        p2.setY(new Float(r * Math.sin(angle) + pivoty));
+        
+        s.setPoint1(p1);
+        s.setPoint2(p2);
         
         //notificar a la capa de presentación
         notifyObservers();        

@@ -33,7 +33,7 @@ public interface IController extends Observable {
     void deleteObserver(Observer o);
 
     
-    void rotateSelectedShape(Integer index);
+    void rotateSelectedShape(Integer index) throws ControllerException;
     
     void deleteShape(Integer index);
 

@@ -5,7 +5,9 @@
  */
 package eci.pdsw.draw.gui;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import eci.pdsw.draw.controller.Controller;
+import eci.pdsw.draw.controller.ControllerException;
 import eci.pdsw.draw.controller.IController;
 import eci.pdsw.draw.model.ElementType;
 
@@ -89,7 +91,11 @@ public class GUI extends JFrame {
                     JOptionPane.showMessageDialog(rootPane, "No shape selected.");
                 }
                 else{
-                    shapeCanvas.rotateSelectedShape(shapeList.getSelectedShapeIndex());                    
+                    try {
+                        shapeCanvas.rotateSelectedShape(shapeList.getSelectedShapeIndex());
+                    } catch(ControllerException ex) {
+                        Logger.logMsg(Logger.ERROR, ex.toString());
+                    }
                 }
                 
             }

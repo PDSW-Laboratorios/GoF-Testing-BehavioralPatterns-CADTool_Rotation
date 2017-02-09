@@ -5,11 +5,15 @@
  */
 package eci.pdsw.draw.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author fchaves
  */
 public class Point {
+    private static final double EPSILON = 1e-8;
+    
     private Float x;
 
     private Float y;
@@ -42,6 +46,29 @@ public class Point {
     @Override
     public String toString() {
         return "[" + x + ", " + y +  "]";
+    }
+    
+    @Override
+    public boolean equals(Object s) {
+        boolean r = true;
+        
+        try {
+            Point p = (Point) s;
+            r = r && ( Math.abs(p.getX() - this.getX()) < EPSILON );
+            r = r && ( Math.abs(p.getY() - this.getY()) < EPSILON );
+        } catch (ClassCastException e) {
+            r = false;
+        }
+        
+        return r;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.x);
+        hash = 97 * hash + Objects.hashCode(this.y);
+        return hash;
     }
     
 }

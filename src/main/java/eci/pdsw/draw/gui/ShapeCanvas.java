@@ -5,6 +5,7 @@
  */
 package eci.pdsw.draw.gui;
 
+import eci.pdsw.draw.controller.ControllerException;
 import eci.pdsw.draw.controller.IController;
 import eci.pdsw.draw.gui.shapes.LineRenderer;
 import eci.pdsw.draw.gui.shapes.RectangleRenderer;
@@ -70,7 +71,7 @@ public class ShapeCanvas extends JPanel implements Observer {
         this.repaint();
     }
     
-    public void rotateSelectedShape(Integer index){
+    public void rotateSelectedShape(Integer index) throws ControllerException {
         controller.rotateSelectedShape(index);
         this.repaint();
     }
