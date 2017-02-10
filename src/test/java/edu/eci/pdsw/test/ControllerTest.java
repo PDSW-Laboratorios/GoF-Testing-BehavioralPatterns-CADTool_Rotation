@@ -24,9 +24,14 @@ import static org.junit.Assert.*;
 public class ControllerTest {
     
     /**
-     * Prueba Clase de Equivalencia: Rota linea vertical
-     * Deberia rotar una figura 90 grados a la derecha cuando la linea es vertical
-     * @throws java.lang.Exception
+     * # CE: 1
+     * Metodo: Controller.rotateSelectedShape 
+     * Clase de Equivalencia: Linea recta l tal que l.getPoint1.x == l.getPoint2.x
+     * Tipo: Correcta/Standard
+     * Resultado: Lina recta r tal que 
+     * (r.getPoint2.x == l.getPoint2.x + l.getPoint2.y - l.getPiont1.y) ^ 
+     * (r.getPoint2 == l.getPoint1.y) ^ (r.getPoint1.x == l.getPoint1.x) ^ 
+     * (r.getPoint1.y == l.getPoint1.y)
      */
     @Test
     public void testClaseEquivalenciaRotaLineaVertical() throws Exception {
@@ -47,9 +52,16 @@ public class ControllerTest {
     }
     
     /**
-     * Prueba Clase de Equivalencia: Linea Recta Inclinada Con Pendiente Positiva
-     * Deberia rotar una figura 90 grados a la derecha con pendiente positiva
-     * @throws java.lang.Exception
+     * # CE: 2
+     * Metodo: Controller.rotateSelectedShape 
+     * Clase de Equivalencia: Linea recta y cualquier tipo de rectangulo l tal que 
+     * ((l.getPoint2.y - l.getPoint1.y) / (l.getPoint2.x - l.getPoint1.x)) > 0
+     * Tipo: Correcta/Standard
+     * Resultado: Linea recta y cualquier tipo de rectangulo r tal que 
+     * (r.getPoint1.x == l.getPoint1.x) ^ 
+     * (r.getPoint1.y == l.getPoint1.y) ^ 
+     * (r.getPoint2.x == (l.getPoint2.y - l.getPoint1.y + l.getPoint1.x)) ^ 
+     * (r.getPoint2.y == (l.getPoint1.y - l.getPoint2.x + l.getPoint1.x))
      */
     @Test
     public void testClaseEquivalenciaLineaRectaInclinadaConPendientePositiva() throws Exception {
@@ -70,9 +82,14 @@ public class ControllerTest {
     }
     
     /**
-     * Prueba Clase de Equivalencia: Linea Recta Inclinada Con Pendiente Negativa
-     * Deberia rotar una figura 90 grados a la derecha con pendiente negativa
-     * @throws java.lang.Exception
+     * # CE: 3
+     * Metodo: Controller.rotateSelectedShape 
+     * Clase de Equivalencia: Linea recta l tal que ((l.getPoint2.y - l.getPoint1.y) / (l.getPoint2.x - l.getPoint1.x)) < 0
+     * Tipo: Correcta/Standard
+     * Resultado: Linea recta r tal que (r.getPoint1.x == l.getPoint1.x) ^ 
+     * (r.getPoint1.y == l.getPoint2.y - l.getPoint2.x - l.getPoint1.x) ^ 
+     * (r.getPoint2.x == l.getPoint1.y - l.getPoint2.y + l.getPoint1.x) ^ 
+     * (r.getPoint2.y == l.getPoint2.y) 
      */
     @Test
     public void testClaseEquivalenciaLineaRectaInclinadaConPendienteNegativa() throws Exception {
@@ -93,9 +110,13 @@ public class ControllerTest {
     }
     
     /**
-     * Prueba Clase de Equivalencia: Linea Recta Horizontal
-     * Deberia rotar una figura 90 grados a la derecha cuando es una recta horizontal
-     * @throws java.lang.Exception
+     * # CE: 4
+     * Metodo: Controller.rotateSelectedShape 
+     * Clase de Equivalencia: Linea recta  l  tal que l.getPoint1.y == l.getPoint2.y
+     * Tipo: Correcta/Standard
+     * Resultado: Linea recta r tal que (r.getPoint1.x == l.getPoint1.x) ^ 
+     * (r.getPoint1.y == l.getPoint1.y) ^ (r.getPoint2.x == l.getPoint1.x) ^ 
+     * (r.getPoint2.y == l.getPoint2.y - l.getPoint2.x + l.getPoint1.x)
      */
     @Test
     public void testClaseEquivalenciaLineaRectaHorizontal() throws Exception {
@@ -116,9 +137,11 @@ public class ControllerTest {
     }
     
     /**
-     * Prueba Clase de Equivalencia: Indice invalido
-     * Deberia lanzar excepcion si se da un indice invalido de las figuras
-     * @throws java.lang.Exception
+     * # CE: 6
+     * Metodo: Controller.rotateSelectedShape 
+     * Clase de Equivalencia: index < 0 V index > (shapes.getSize - 1)
+     * Tipo: Error
+     * Resultado: Indice en shapes inválido.
      */
     @Test(expected=ControllerException.class)
     public void testClaseEquivalenciaIndiceInvalido() throws Exception {
