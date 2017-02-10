@@ -13,6 +13,10 @@ import eci.pdsw.draw.gui.shapes.Renderer;
 import eci.pdsw.draw.model.Line;
 import eci.pdsw.draw.model.Rectangle;
 import eci.pdsw.draw.model.Shape;
+import eci.pdsw.pattern.command.Command;
+import eci.pdsw.pattern.command.DrawCommand;
+import eci.pdsw.pattern.command.DuplicateCommand;
+import eci.pdsw.pattern.command.RotateCommand;
 import eci.pdsw.pattern.observer.Observer;
 
 import java.awt.Graphics;
@@ -57,7 +61,9 @@ public class ShapeCanvas extends JPanel implements Observer {
             public void mouseReleased(MouseEvent e) {
                 endDrag = new Point(e.getX(), e.getY());
                 if (Math.abs(endDrag.x - startDrag.x) > 2 && Math.abs(endDrag.y - startDrag.y) > 2) {
-                    controller.addShapeFromScreenPoints(startDrag, endDrag);
+                    Command a = new DrawCommand(controller, startDrag, endDrag);
+                    a.execute();
+                    controller.notifyAction(a);
                 }
                 startDrag = null;
                 endDrag = null;
@@ -67,12 +73,16 @@ public class ShapeCanvas extends JPanel implements Observer {
 
     
     public void duplicateShapes(){
-        controller.duplicateShapes();
+        Command a = new DuplicateCommand(controller);
+        a.execute();
+        controller.notifyAction(a);
         this.repaint();
     }
     
-    public void rotateSelectedShape(Integer index) throws ControllerException {
-        controller.rotateSelectedShape(index);
+    public void rotateSelectedShape(Integer index) {
+        Command a = new RotateCommand(controller, index);
+        a.execute();
+        controller.notifyAction(a);
         this.repaint();
     }
     

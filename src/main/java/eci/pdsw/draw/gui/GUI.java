@@ -58,6 +58,7 @@ public class GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.undo();
+                shapeCanvas.update();
             }
             
         });
@@ -67,6 +68,7 @@ public class GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.redo();
+                shapeCanvas.update();
             }
             
         });
@@ -91,26 +93,14 @@ public class GUI extends JFrame {
                     JOptionPane.showMessageDialog(rootPane, "No shape selected.");
                 }
                 else{
-                    try {
-                        shapeCanvas.rotateSelectedShape(shapeList.getSelectedShapeIndex());
-                    } catch(ControllerException ex) {
-                        Logger.logMsg(Logger.ERROR, ex.toString());
-                    }
+                    shapeCanvas.rotateSelectedShape(shapeList.getSelectedShapeIndex());
                 }
-                
             }
-            
         });
-
-
         
         transformsMenu.add(duplicate);
         transformsMenu.add(rotate);
         
-        
-        
-        
-
         result.add(shapeMenu);
         result.add(styleMenu);
         result.add(undoMenu);

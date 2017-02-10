@@ -11,6 +11,7 @@ import eci.pdsw.draw.model.ElementType;
 import eci.pdsw.draw.model.ShapeFactory;
 import eci.pdsw.draw.model.Point;
 import eci.pdsw.draw.model.Shape;
+import eci.pdsw.pattern.command.RotateCommand;
 import eci.pdsw.pattern.observer.Observer;
 
 import java.util.ArrayList;
@@ -35,7 +36,12 @@ public class Controller implements IController {
         
     private Renderer renderer;
     
+    private Stack<Command> undos;
+    private Stack<Command> redos;
+    
     public Controller() {
+        undos = new Stack<Command>();
+        redos = new Stack<Command>();
     }
     
     @Override
@@ -45,8 +51,7 @@ public class Controller implements IController {
                 
         ElementType actualElementType = getSelectedElementType();
     	setSelectedElementType(actualElementType);
-        addShape(mp1, mp2);                 
-
+        addShape(mp1, mp2);
     }
 
     
@@ -58,7 +63,6 @@ public class Controller implements IController {
      */
     @Override
     public void duplicateShapes(){
-        
         List<Point> newShapesFirstPoints=new LinkedList<>();
         List<Point> newShapesSecondPoints=new LinkedList<>();
         
@@ -74,11 +78,8 @@ public class Controller implements IController {
         while (it1.hasNext() && it2.hasNext()){
             addShape(it1.next(), it2.next());
         }
-                
-        
     }
   
-    
     @Override
     public void addShape(Point p1,Point p2) {
         shapes.add(shapeFactory.createShape(selectedElement, p1, p2));
@@ -87,12 +88,22 @@ public class Controller implements IController {
     
     @Override
     public void undo() {
-    	throw new RuntimeException("No se ha implemenado UNDO");
+    	if (! undos.empty()) {
+            Command a = undos.pop();
+            a.undo();
+            redos.push(a);
+            notifyObservers();
+        }
     }
 
     @Override
     public void redo() {
-    	throw new RuntimeException("No se ha implemenado UNDO");
+    	if (! redos.empty()) {
+            Command a = redos.pop();
+            a.execute();
+            undos.push(a);
+            notifyObservers();
+        }
     }
 
     @Override
@@ -108,6 +119,25 @@ public class Controller implements IController {
         
         //notificar a la capa de presentación
         notifyObservers();
+    }
+    
+    @Override
+    public void deleteShape(Shape s) {
+        shapes.remove(s);
+        
+        //notificar a la capa de presentación
+        notifyObservers();
+    }
+    
+    /**
+     * Agrega una accion a la pila de retroceso
+     * @param a accion realizada
+     */
+    public void notifyAction(Command a) {
+        if (a != null) {
+            undos.push(a);
+            redos.clear();
+        }
     }
     
     /**
@@ -203,6 +233,4 @@ public class Controller implements IController {
                     o.update();
             }
     }
-
-
 }

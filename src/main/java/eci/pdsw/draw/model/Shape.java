@@ -5,6 +5,8 @@
  */
 package eci.pdsw.draw.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author fchaves
@@ -39,5 +41,22 @@ public abstract class Shape {
         this.p2 = p2;
     }
 
-    
+    /**
+     * Compara si dos objetos tienen la misma referencia para considerarlos 
+     * iguales
+     * @param o objeto a comparar
+     * @return tienen la misma referencia (son el mismo objeto)
+     */
+    @Override
+    public boolean equals(Object o) {
+        return o == this;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.p1);
+        hash = 41 * hash + Objects.hashCode(this.p2);
+        return hash;
+    }
 }

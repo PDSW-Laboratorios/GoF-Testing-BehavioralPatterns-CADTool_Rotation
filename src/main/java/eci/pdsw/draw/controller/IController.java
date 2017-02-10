@@ -9,6 +9,7 @@ import eci.pdsw.draw.gui.shapes.Renderer;
 import eci.pdsw.draw.model.ElementType;
 import eci.pdsw.draw.model.Point;
 import eci.pdsw.draw.model.Shape;
+import eci.pdsw.pattern.command.Command;
 import eci.pdsw.pattern.observer.Observable;
 import eci.pdsw.pattern.observer.Observer;
 import java.util.List;
@@ -36,6 +37,8 @@ public interface IController extends Observable {
     void rotateSelectedShape(Integer index) throws ControllerException;
     
     void deleteShape(Integer index);
+    
+    void deleteShape(Shape s);
 
     public void duplicateShapes();
     
@@ -45,7 +48,6 @@ public interface IController extends Observable {
 
     List<Shape> getShapes();
 
-    @Override
     void notifyObservers();
 
     void redo();
@@ -55,5 +57,7 @@ public interface IController extends Observable {
     void setSelectedElementType(ElementType elementType);
 
     void undo();
+
+    public void notifyAction(Command aThis);
     
 }
